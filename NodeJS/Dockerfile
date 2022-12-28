@@ -12,4 +12,7 @@ COPY . /usr/src/server.js/
 
 EXPOSE 7500
 
-CMD [ "node", 'server.js' ]
+CMD [ "node", "server.js" ]
+
+
+
