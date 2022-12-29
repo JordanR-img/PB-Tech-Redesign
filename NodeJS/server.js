@@ -41,12 +41,12 @@ async function main() {
         bathrooms: 4,
       },
     ]);
-    // await createListing(client, {
-    //   name: "Lovely Loft",
-    //   summary: "a charming loft in paris",
-    //   bedrooms: 1,
-    //   bathrooms: 1,
-    // });
+    await createListing(client, {
+      name: "Lovely Loft",
+      summary: "a charming loft in paris",
+      bedrooms: 1,
+      bathrooms: 1,
+    });
     // await listDatabases(client);
   } catch (e) {
     console.error(e);
@@ -91,3 +91,4 @@ const PORT = process.env.PORT || 3002;
 server.listen(PORT, () => {
   console.log("I'm listening on port", PORT);
 });
+
