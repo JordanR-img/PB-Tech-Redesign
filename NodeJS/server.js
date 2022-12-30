@@ -1,52 +1,59 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
-
 const server = express();
 const env = require("dotenv");
 env.config();
 server.use(express.json());
 const PASSWORD = process.env.PASSWORD;
+server.use(require("cors")()) // allow Cross-domain requests 
 
 async function main() {
-  const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/test`;
+  // const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/test`;
+
+  const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`
 
   const client = new MongoClient(uri);
 
   try {
     await client.connect();
 
-    await createMultipleListings(client, [
-      {
-        name: "Lovely place",
-        summary: "a charming loft in paris",
-        bedrooms: 9,
-        bathrooms: 0,
-      },
-      {
-        name: "Tavern",
-        summary: "a charming loft in paris",
-        bedrooms: 7,
-        bathrooms: 9,
-      },
-      {
-        name: "pub",
-        summary: "a charming loft in paris",
-        bedrooms: 54,
-        bathrooms: 7,
-      },
-      {
-        name: "mansion",
-        summary: "a charming loft in paris",
-        bedrooms: 5,
-        bathrooms: 4,
-      },
-    ]);
-    await createListing(client, {
-      name: "Lovely Loft",
-      summary: "a charming loft in paris",
-      bedrooms: 1,
-      bathrooms: 1,
+     await gettingData(client, {
+    model: "HP",
+    type: "laptop",
     });
+
+    // await createMultipleListings(client, [
+    //   {
+    //     name: "Lovely place",
+    //     summary: "a charming loft in paris",
+    //     bedrooms: 9,
+    //     bathrooms: 0,
+    //   },
+    //   {
+    //     name: "Tavern",
+    //     summary: "a charming loft in paris",
+    //     bedrooms: 7,
+    //     bathrooms: 9,
+    //   },
+    //   {
+    //     name: "pub",
+    //     summary: "a charming loft in paris",
+    //     bedrooms: 54,
+    //     bathrooms: 7,
+    //   },
+    //   {
+    //     name: "mansion",
+    //     summary: "a charming loft in paris",
+    //     bedrooms: 5,
+    //     bathrooms: 4,
+    //   },
+    // ]);
+    // await createListing(client, {
+    //   name: "Lovely Loft",
+    //   summary: "a charming loft in paris",
+    //   bedrooms: 1,
+    //   bathrooms: 1,
+    // });
     // await listDatabases(client);
   } catch (e) {
     console.error(e);
@@ -92,3 +99,13 @@ server.listen(PORT, () => {
   console.log("I'm listening on port", PORT);
 });
 
+server.get("/", (req, res) => {
+  res.send("Home sweet home 🏚") // always responds with the string "TODO"
+});
+
+
+async function gettingData(client, newComputer) {
+  const result = await client.db('PBT').collection("PB database").insertOne(newComputer);
+  console.log(`new listing created with the following id ${result.insertedId}`);
+
+}
