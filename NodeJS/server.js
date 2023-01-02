@@ -5,22 +5,26 @@ const env = require("dotenv");
 env.config();
 server.use(express.json());
 const PASSWORD = process.env.PASSWORD;
-server.use(require("cors")()) // allow Cross-domain requests 
+server.use(require("cors")()); // allow Cross-domain requests
 
 async function main() {
-  // const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/test`;
-
-  const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`
+  const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
 
   const client = new MongoClient(uri);
 
   try {
     await client.connect();
 
-     await gettingData(client, {
-    model: "HP",
-    type: "laptop",
+    const results = await client.db('PBT').collection('PB').find().toArray()
+
+    server.get("/", (req, res) => {
+      res.send(results); // always responds with the string "TODO"
     });
+    // await gettingData(client, {
+    //   model: "HP",
+    //   type: "laptop",
+    // });
+    console.log(results)
 
     // await createMultipleListings(client, [
     //   {
@@ -71,7 +75,7 @@ async function createMultipleListings(client, newListings) {
   console.log(
     `${result.insertedCount} new listings created with the following id(s)`
   );
-  console.log(result.insertedIds)
+  console.log(result.insertedIds);
 }
 
 async function createListing(client, newListing) {
@@ -99,13 +103,22 @@ server.listen(PORT, () => {
   console.log("I'm listening on port", PORT);
 });
 
-server.get("/", (req, res) => {
-  res.send("Home sweet home 🏚") // always responds with the string "TODO"
-});
+// server.get("/", (req, res) => {
+//   res.send("Home sweet home 🏚"); // always responds with the string "TODO"
+// });
 
-
+// server.get("/", (req, res) => {
+//   const client = new MongoClient(uri);
+//   const results = client.db('PBT').collection('PB').find().toArray()
+//   res.send(results); // always responds with the string "TODO"
+// });
 async function gettingData(client, newComputer) {
-  const result = await client.db('PBT').collection("PB database").insertOne(newComputer);
-  console.log(`new listing created with the following id ${result.insertedId}`);
+  // const cursor = client.collection('PB database').find({ status: 'HP' });
 
+  const result = await client.db("PBT").collection("PB").insertOne(newComputer);
+  console.log(`new listing created with the following id ${result.insertedId}`);
+  // console.log(client.db('PBT').collection('PB database'))
+  // console.log(cursor)
 }
+
+

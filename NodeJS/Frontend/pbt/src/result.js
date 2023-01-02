@@ -7,4 +7,4 @@ export default function result(){
     }).catch(() => {
         alert('Data has not been received')
     })
-}
+} 
