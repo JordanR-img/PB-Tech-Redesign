@@ -17,7 +17,7 @@ async function main() {
 
     const results = await client.db('PBT').collection('PB').find().toArray()
 
-    server.get("/", (req, res) => {
+    server.get("/api", (req, res) => {
       res.send(results); // always responds with the string "TODO"
     });
     // await gettingData(client, {

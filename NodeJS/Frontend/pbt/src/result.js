@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export default function result(){
-    axios.get("/").then(res => {
-        console.log(res.data)
+export default function Result(req, res){
+    axios.get("localhost:4444/api").then(res => {
+        console.log(res)
         
     }).catch(() => {
         alert('Data has not been received')
