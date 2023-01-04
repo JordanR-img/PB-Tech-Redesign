@@ -1,11 +1,12 @@
 .MainContainer {
-  /* display: flex;
-  flex-direction: row; */
+  display: flex; 
+  /* flex-direction: row;  */
   /* align-items: flex-start; */
-  /* justify-content: space-between; */
-  position: absolute;
-width: 100%;
-background-color: black;
+  justify-content: space-between;
+  /* position: absolute; */
+  height: 30px;
+  width: 100%;
+  background-color: black;
   /* border: solid red; */
   /* object-fit: contain; */
 }
@@ -13,8 +14,7 @@ background-color: black;
 .ContainerItems {
   display: flex;
   list-style-type: none;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   color: white;
-  
-  
 }

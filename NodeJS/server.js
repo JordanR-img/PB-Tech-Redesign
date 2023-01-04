@@ -7,6 +7,9 @@ server.use(express.json());
 const PASSWORD = process.env.PASSWORD;
 server.use(require("cors")()); // allow Cross-domain requests
 
+
+
+
 async function main() {
   const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -17,8 +20,12 @@ async function main() {
 
     const results = await client.db('PBT').collection('PB').find().toArray()
 
-    server.get("/api", (req, res) => {
-      res.send(results); // always responds with the string "TODO"
+    // server.send('/laptop').get((req, res) => {
+    //   client.find().then(sendLaptop => res.json(sendLaptop))
+    // })
+
+    server.get("/laptop", (req, res) => {
+       res.send(results); // always responds with the string "TODO"
     });
     // await gettingData(client, {
     //   model: "HP",
@@ -28,10 +35,7 @@ async function main() {
 
     // await createMultipleListings(client, [
     //   {
-    //     name: "Lovely place",
-    //     summary: "a charming loft in paris",
-    //     bedrooms: 9,
-    //     bathrooms: 0,
+    //  
     //   },
     //   {
     //     name: "Tavern",
@@ -52,12 +56,9 @@ async function main() {
     //     bathrooms: 4,
     //   },
     // ]);
-    // await createListing(client, {
-    //   name: "Lovely Loft",
-    //   summary: "a charming loft in paris",
-    //   bedrooms: 1,
-    //   bathrooms: 1,
-    // });
+    await createListing(client, {
+     
+    });
     // await listDatabases(client);
   } catch (e) {
     console.error(e);
@@ -68,8 +69,8 @@ async function main() {
 
 async function createMultipleListings(client, newListings) {
   const result = await client
-    .db("sample_airbnb")
-    .collection("listingsAndReviews")
+    .db("PBT")
+    .collection("Carousel")
     .insertMany(newListings);
 
   console.log(
@@ -80,8 +81,8 @@ async function createMultipleListings(client, newListings) {
 
 async function createListing(client, newListing) {
   const result = await client
-    .db("sample_airbnb")
-    .collection("listingsAndReviews")
+    .db("PBT")
+    .collection("Carousel")
     .insertOne(newListing);
 
   console.log(`new listing created with the following id ${result.insertedId}`);
