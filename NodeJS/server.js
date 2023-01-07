@@ -6,8 +6,8 @@ env.config();
 server.use(express.json());
 const PASSWORD = process.env.PASSWORD;
 server.use(require("cors")()); // allow Cross-domain requests
-
-
+const EmployeeRoute = require('./routes/employee')
+const LoginRoute = require('./routes/auth')
 
 
 async function main() {
@@ -123,3 +123,5 @@ async function gettingData(client, newComputer) {
 }
 
 
+server.use('/api', LoginRoute)
+server.use('/api/employee', EmployeeRoute)
