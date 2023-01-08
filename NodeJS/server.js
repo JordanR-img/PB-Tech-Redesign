@@ -123,5 +123,5 @@ async function gettingData(client, newComputer) {
 }
 
 
-server.use('/api', LoginRoute)
-server.use('/api/employee', EmployeeRoute)
+server.set('/api', LoginRoute)
+server.set('/api/employee', EmployeeRoute)

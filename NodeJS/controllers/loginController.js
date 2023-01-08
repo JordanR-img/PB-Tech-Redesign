@@ -17,12 +17,12 @@ const register = (req, res, next) => {
     });
     user
       .save()
-      .then(user => {
+      .then((user) => {
         res.json({
           message: "User added successfully",
         });
       })
-      .catch(error => {
+      .catch((error) => {
         res.json({
           message: "An error occured",
         });
