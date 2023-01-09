@@ -1,38 +1,78 @@
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 const User = require("../model/User");
+const jwt = require("jsonwebtoken");
+
+const jwtSecret =
+  "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
+// exports.register = async (req, res, next) => {
+//   const { username, password } = req.body;
+//   if (password.length < 6) {
+//     return res.status(400).json({ message: "Password less than 6 characters" });
+//   }
+//   try {
+//     await User.create({
+//       username,
+//       password,
+//     });
+//     bcrypt
+//       .hash(password, 10)
+//       .then(async (hash) => {
+//         await User.create({
+//           username,
+//           password: hash,
+//         });
+//       })
+//       .then((user) =>
+//         res.status(200).json({
+//           message: "User successfully created",
+//           user,
+//         })
+//       );
+//   } catch (error) {
+//     res.status(401).json({
+//       message: "User not successful created",
+//       error: error.message,
+//     });
+//   }
+// };
 
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
   if (password.length < 6) {
     return res.status(400).json({ message: "Password less than 6 characters" });
   }
-  try {
+  bcrypt.hash(password, 10).then(async (hash) => {
     await User.create({
       username,
-      password,
-    });
-    bcrypt
-      .hash(password, 10)
-      .then(async (hash) => {
-        await User.create({
-          username,
-          password: hash,
+      password: hash,
+    })
+      .then((user) => {
+        const maxAge = 3 * 60 * 60;
+        const token = jwt.sign(
+          { id: user._id, username, role: user.role },
+          jwtSecret,
+          {
+            expiresIn: maxAge, // 3hrs
+          }
+        );
+        res.cookie("jwt", token, {
+          httpOnly: true,
+          maxAge: maxAge * 1000,
+        });
+        res.status(201).json({
+          message: "User successfully created",
+          user: user._id,
+          role: user.role,
         });
       })
-      .then((user) =>
-        res.status(200).json({
-          message: "User successfully created",
-          user,
+      .catch((error) =>
+        res.status(400).json({
+          message: "User not successful created",
+          error: error.message,
         })
       );
-  } catch (error) {
-    res.status(401).json({
-      message: "User not successful created",
-      error: error.message,
-    });
-  }
+  });
 };
-
 exports.login = async (req, res, next) => {
   const { username, password } = req.body;
   // Check if username and password is provided
@@ -47,9 +87,9 @@ exports.login = async (req, res, next) => {
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username, password });
+    const user = await User.findOne({ username });
     if (!user) {
-      res.status(401).json({
+      res.status(400).json({
         message: "Login not successful",
         error: "User not found",
       });
@@ -60,7 +100,7 @@ exports.login = async (req, res, next) => {
               message: "Login successful",
               user,
             })
-          : res.status(400).json({ message: "Login not successful" });
+          : res.status(400).json({ message: "Login not successful mate" });
       });
     }
   } catch (error) {
