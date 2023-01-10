@@ -10,7 +10,9 @@ const EmployeeRoute = require("./routes/employee");
 const LoginRoute = require("./routes/auth");
 
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 
+server.use(cookieParser());
 // async function main() {
 const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -26,6 +28,22 @@ mongoose
   .catch((err) => console.log(err));
 
  
+
+  const { adminAuth, userAuth } = require("./Auth/auth");
+
+server.get("/admin", adminAuth, (req, res) => res.send("Admin Route"));
+server.get("/basic", userAuth, (req, res) => res.send("User Route"));
+server.set("view engine", "ejs")
+server.get("/", (req, res) => res.render("home"))
+server.get("/register", (req, res) => res.render("register"))
+server.get("/login", (req, res) => res.render("login"))
+server.get("/admin", adminAuth, (req, res) => res.render("admin"))
+server.get("/basic", userAuth, (req, res) => res.render("user"))
+
+server.get("/logout", (req, res) => {
+  res.cookie("jwt", "", { maxAge: "1" })
+  res.redirect("/")
+})
 // try {
 //   await client.connect();
 

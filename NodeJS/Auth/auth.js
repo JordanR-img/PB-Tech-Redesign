@@ -2,8 +2,65 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
 
-const jwtSecret =
-  "4715aed3c946f7b0a38e6b534a9583628d84e96d10fbc04700770d572af3dce43625dd";
+const jwtSecret = process.env.TOKEN
+
+exports.adminAuth = (req, res, next) => {
+  const token = req.cookies.jwt
+  if (token) {
+    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+      if (err) {
+        return res.status(401).json({ message: "Not authorized" })
+      } else {
+        if (decodedToken.role !== "admin") {
+          return res.status(401).json({ message: "Not authorized" })
+        } else {
+          next()
+        }
+      }
+    })
+  } else {
+    return res
+      .status(401)
+      .json({ message: "Not authorized, token not available" })
+  }
+}
+
+exports.userAuth = (req, res, next) => {
+  const token = req.cookies.jwt
+  if (token) {
+    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+      if (err) {
+        return res.status(401).json({ message: "Not authorized" })
+      } else {
+        if (decodedToken.role !== "Basic") {
+          return res.status(401).json({ message: "Not authorized" })
+        } else {
+          next()
+        }
+      }
+    })
+  } else {
+    return res
+      .status(401)
+      .json({ message: "Not authorized, token not available" })
+  }
+}
+
+exports.getUsers = async (req, res, next) => {
+  await User.find({})
+    .then(users => {
+      const userFunction = users.map(user => {
+        const container = {}
+        container.username = user.username
+        container.role = user.role
+        return container
+      })
+      res.status(200).json({ user: userFunction })
+    })
+    .catch(err =>
+      res.status(401).json({ message: "Not successful", error: err.message })
+    )
+}
 // exports.register = async (req, res, next) => {
 //   const { username, password } = req.body;
 //   if (password.length < 6) {

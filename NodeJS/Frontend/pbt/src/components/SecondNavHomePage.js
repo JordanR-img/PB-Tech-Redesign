@@ -9,7 +9,7 @@ export default function SecondNavHomePage() {
   return (
     <div className={Style.BigContainer}>
       {/* {PB} */}
-      <img src={PB} alt="PB Tech" class="mainLogo"></img>
+      <img src={PB} alt="PB Tech" ></img>
       <div className={Style.ContainerItems}>
         
         <ul className={Style.LeftList}>
