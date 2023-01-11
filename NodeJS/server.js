@@ -17,33 +17,30 @@ server.use(cookieParser());
 const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
 
 // const client = new MongoClient(uri);
-mongoose.set('strictQuery', false),
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    
-  })
-  .then(() => console.log("Database connected!"))
-  .catch((err) => console.log(err));
+mongoose.set("strictQuery", false),
+  mongoose
+    .connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log("Database connected!"))
+    .catch((err) => console.log(err));
 
- 
-
-  const { adminAuth, userAuth } = require("./Auth/auth");
+const { adminAuth, userAuth } = require("./Auth/auth");
 
 server.get("/admin", adminAuth, (req, res) => res.send("Admin Route"));
 server.get("/basic", userAuth, (req, res) => res.send("User Route"));
-server.set("view engine", "ejs")
-server.get("/", (req, res) => res.render("home"))
-server.get("/register", (req, res) => res.render("register"))
-server.get("/login", (req, res) => res.render("login"))
-server.get("/admin", adminAuth, (req, res) => res.render("admin"))
-server.get("/basic", userAuth, (req, res) => res.render("user"))
+server.set("view engine", "ejs");
+server.get("/", (req, res) => res.render("home"));
+server.get("/register", (req, res) => res.render("register"));
+server.get("/login", (req, res) => res.render("login"));
+server.get("/admin", adminAuth, (req, res) => res.render("admin"));
+server.get("/basic", userAuth, (req, res) => res.render("user"));
 
 server.get("/logout", (req, res) => {
-  res.cookie("jwt", "", { maxAge: "1" })
-  res.redirect("/")
-})
+  res.cookie("jwt", "", { maxAge: "1" });
+  res.redirect("/");
+});
 // try {
 //   await client.connect();
 

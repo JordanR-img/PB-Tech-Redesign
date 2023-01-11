@@ -1,0 +1,268 @@
+.MainContainer {
+  /* border: solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 15rem; */
+  /* width: 500px; */
+  /* margin-top: 200px; */
+  /* margin-left: 40%; */
+  /* text-align: center; */
+}
+
+.Form {
+  /* width: 400px;
+  height: 736px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  margin: 112px 711px 107px 617px;
+  padding: 0; */
+}
+
+span {
+  color: #0d4f77;
+}
+
+.RadioButton {
+  color: #f08222;
+  padding-right: 2%;
+}
+
+.FaceBook {
+  border: #4267b2;
+  color: #fff;
+
+  width: 400px;
+  height: 28px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #4267b2;
+}
+
+.Username {
+    width: 40px;
+    height: 24px;
+    flex-grow: 0;
+    /* font-family: Roboto; */
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #7f7f7f;
+}
+
+.Password {
+    width: 40px;
+    height: 24px;
+    flex-grow: 0;
+    /* font-family: Roboto; */
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #7f7f7f;
+}
+
+.UserField {
+  /* height: 58px; */
+  /* align-self: stretch; */
+  /* flex-grow: 0; */
+  /* border-radius: 9px;
+  border: solid 1px #7f7f7f;
+  width: auto; */
+  width: 200px;
+  font-family: sans-serif;
+  font-size: 15px;
+  padding: 3px;
+  border: 1px solid #7f7f7f;
+}
+
+.PassField {
+  /* height: 58px;
+  width: auto; */
+  /* align-self: stretch; */
+  /* flex-grow: 0; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; */
+  /* padding: 14px 16px; */
+  /* border-radius: 9px;  */
+  border: solid 1px #7f7f7f;
+  width: 200px;
+  font-family: sans-serif;
+  font-size: 15px;
+  padding: 3px;
+}
+
+.Google {
+  /* border: solid 1px ; */
+  /* width: 400px;
+    height: 140px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0; */
+
+  width: 400px;
+  height: 28px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 8px;
+  border: solid 1px #7f7f7f;
+  background-color: #fff;
+}
+
+.SignedIn {
+  /* font-family: Roboto-Regular; */
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+h1 {
+  /* text-align: left;
+    border: solid red;
+    padding-right: 4em;
+    width: 6em; */
+
+  width: 500px;
+  height: 70px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 30px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.24;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0d4f77;
+}
+
+.DontHave {
+  width: 303px;
+  height: 24px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+
+.Create {
+  color: #0d4f77;
+}
+
+.ForgotPassword {
+  width: 128px;
+  height: 24px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: right;
+  color: #0d4f77;
+}
+
+.Continue {
+  /* border: solid black ; */
+  width: 400px;
+  height: 58px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* gap: 4px; */
+  /* padding: 16px 32px; */
+  border-radius: 8px;
+  background-color: #f08222;
+  border: solid #f08222;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  /* padding-left: 5%; */
+
+  border: #4267b2;
+  color: #fff;
+
+  /* width: 400px;
+  height: 58px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #4267b2; */
+}
+
+.Sign {
+  width: 132px;
+  height: 24px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+
+.Security {
+    /* border: solid black; */
+  height: 44px;
+  flex-grow: 1;
+  /* font-family: Roboto; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}

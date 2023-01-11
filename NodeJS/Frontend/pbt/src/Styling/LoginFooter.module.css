@@ -1,0 +1,21 @@
+/* .MainContainer {
+    display: flex;
+    
+    background-color: #464646;
+    margin-top: auto;
+} */
+
+p {
+    color: #696969;
+}
+
+.MainContainer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+    background-color: #464646;
+    color: white;
+    text-align: center;
+}

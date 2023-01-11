@@ -2,7 +2,8 @@ import './App.css';
 import Result from './result.js';
 import axios from 'axios'
 import useState from 'react'
-import PBTHomePage from './Pages/PBTHomePage.js';
+// import PBTHomePage from './Pages/PBTHomePage.js';
+import PBTLoginPage from './Pages/PBTLoginPage';
 import ImageSlider from './components/ImageSlider';
 export default function App() {
 
@@ -10,7 +11,8 @@ export default function App() {
 
     
     <div className="App">
-      <PBTHomePage />
+      <PBTLoginPage />
+      {/* <PBTHomePage /> */}
 {/* <ImageSlider /> */}
       {/* <Result /> */}
     </div>

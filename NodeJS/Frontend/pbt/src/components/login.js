@@ -1,4 +1,9 @@
 import React from "react";
+import Style from "../Styling/LoginUsers.module.css";
+import { useState } from "react";
+import { IoRadioButtonOnOutline } from "react-icons/io5";
+import { MdOutlineFacebook } from "react-icons/md";
+import { FcGoogle } from "react-icons/fc";
 
 export default function login() {
   const form = document.querySelector("form");
@@ -12,7 +17,7 @@ export default function login() {
         e.preventDefault();
         display.textContent = "";
         try {
-            console.log('Im logged in')
+          console.log("Im logged in");
           const res = await fetch("/api/auth/login", {
             method: "POST",
             body: JSON.stringify({
@@ -20,7 +25,6 @@ export default function login() {
               password: password.value,
             }),
             headers: { "Content-Type": "application/json" },
-            
           });
           const data = await res.json();
           if (res.status === 400 || res.status === 401) {
@@ -68,24 +72,87 @@ export default function login() {
   //       console.log(err.message);
   //     }
   //   });
+  function LoginUsers(e) {
+    // const [loggedIn, isLoggedIn] = useState();
+
+    e.preventDefault();
+    const username = document.querySelector("#username");
+    const password = document.querySelector("#password");
+    console.log(username.value);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({
+      username: username.value,
+      password: password.value,
+    });
+
+    console.log(username, password);
+    let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:4444/api/auth/login", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
+
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form>
-        <div></div>
+    <div className={Style.MainContainer}>
+      <h1>Sign in to your PB account</h1>
+      <form onSubmit={LoginUsers} className={Style.Form}>
+        <label htmlFor="username" className={Style.Username}>
+          Username
+        </label>
         <br />
-        <label htmlFor="username">Username</label>
+        <input type="text" id="username" className={Style.UserField} required />
         <br />
-        <input type="text" id="username" required />
+        <label htmlFor="password" className={Style.Password}>
+          Password
+        </label>
         <br />
-        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          className={Style.PassField}
+          required
+        />
         <br />
-        <input type="password" id="password" required />
+        <span className={Style.ForgotPassword}>Forgot password?</span> <br />
+        <p className={Style.SignedIn}>
+          <IoRadioButtonOnOutline className={Style.RadioButton} />
+          <span className={Style.Sign}>Keep me signed in</span>
+        </p>
+        <span className={Style.Security}>
+          For your security, we recommend unchecking this box on shared devices.
+        </span>
         <br />
-        <input type="submit" onClick={Login()} value="login" />
         <br />
+        <input
+          type="submit"
+          onClick={Login()}
+          value="CONTINUE"
+          className={Style.Continue}
+        />
       </form>
-      <a href="/register">Don't have an account? Register</a>
+      <a href="/register" className={Style.DontHave}>
+        Don't have PB account?{" "}
+        <span className={Style.Create}>Create PB account</span>
+      </a>
+
+      <p className={Style.FaceBook}>
+        <MdOutlineFacebook />
+        SIGN IN WITH FACEBOOK
+      </p>
+      <p className={Style.Google}>
+        <FcGoogle />
+        SIGN IN WITH GOOGLE
+      </p>
     </div>
   );
 }

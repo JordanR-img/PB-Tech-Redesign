@@ -1,0 +1,8 @@
+.MainContainer {
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+}
