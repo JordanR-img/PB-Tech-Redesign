@@ -48,14 +48,15 @@
   color: #fff;
   position: absolute;
   padding-left: 8%;
-  left: 0; 
+  left: 0;
   /* border: solid red; */
   align-items: center;
 }
 
 .arrow {
-    width: 24px;
-    height: 24px;
-    flex-grow: 0;
-    padding: 2.5px 6.7px 2.5px 6.4px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  flex-grow: 0;
+  padding: 2.5px 6.7px 2.5px 6.4px;
 }

@@ -220,6 +220,8 @@ exports.update = async (req, res, next) => {
   }
 };
 
+
+
 exports.deleteUser = async (req, res, next) => {
   const { id } = req.body;
   await User.findById(id)

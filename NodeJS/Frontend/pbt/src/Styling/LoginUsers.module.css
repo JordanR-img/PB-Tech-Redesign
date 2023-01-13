@@ -35,7 +35,7 @@ span {
 .FaceBook {
   border: #4267b2;
   color: #fff;
-
+  cursor: pointer;
   width: 400px;
   height: 28px;
   flex-grow: 0;
@@ -50,33 +50,33 @@ span {
 }
 
 .Username {
-    width: 40px;
-    height: 24px;
-    flex-grow: 0;
-    /* font-family: Roboto; */
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: #7f7f7f;
+  width: 40px;
+  height: 24px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #7f7f7f;
 }
 
 .Password {
-    width: 40px;
-    height: 24px;
-    flex-grow: 0;
-    /* font-family: Roboto; */
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: #7f7f7f;
+  width: 40px;
+  height: 24px;
+  flex-grow: 0;
+  /* font-family: Roboto; */
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #7f7f7f;
 }
 
 .UserField {
@@ -86,7 +86,11 @@ span {
   /* border-radius: 9px;
   border: solid 1px #7f7f7f;
   width: auto; */
-  width: 200px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  width: 400px;
+  height: 38px;
   font-family: sans-serif;
   font-size: 15px;
   padding: 3px;
@@ -95,6 +99,7 @@ span {
 
 .PassField {
   /* height: 58px;
+  
   width: auto; */
   /* align-self: stretch; */
   /* flex-grow: 0; */
@@ -104,11 +109,15 @@ span {
   align-items: flex-end; */
   /* padding: 14px 16px; */
   /* border-radius: 9px;  */
+  border-radius: 8px;
+
   border: solid 1px #7f7f7f;
-  width: 200px;
+  width: 400px;
+  height: 38px;
   font-family: sans-serif;
   font-size: 15px;
   padding: 3px;
+  cursor: pointer;
 }
 
 .Google {
@@ -122,7 +131,7 @@ span {
     align-items: flex-start;
     gap: 24px;
     padding: 0; */
-
+  cursor: pointer;
   width: 400px;
   height: 28px;
   flex-grow: 0;
@@ -188,6 +197,7 @@ h1 {
 }
 
 .ForgotPassword {
+  /* border: solid red; */
   width: 128px;
   height: 24px;
   flex-grow: 0;
@@ -200,10 +210,16 @@ h1 {
   letter-spacing: normal;
   text-align: right;
   color: #0d4f77;
+
+  position: absolute;
+  padding-top: 0.4em;
+  padding-left: 16%;
+  right: 0.1;
 }
 
 .Continue {
   /* border: solid black ; */
+  cursor: pointer;
   width: 400px;
   height: 58px;
   flex-grow: 0;
@@ -237,6 +253,10 @@ h1 {
   background-color: #4267b2; */
 }
 
+.Continue:hover {
+  background-color: #b45400;
+}
+
 .Sign {
   width: 132px;
   height: 24px;
@@ -253,7 +273,7 @@ h1 {
 }
 
 .Security {
-    /* border: solid black; */
+  /* border: solid black; */
   height: 44px;
   flex-grow: 1;
   /* font-family: Roboto; */
