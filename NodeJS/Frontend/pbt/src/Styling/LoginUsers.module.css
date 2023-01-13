@@ -47,6 +47,8 @@ span {
   padding: 16px;
   border-radius: 8px;
   background-color: #4267b2;
+  padding-right: 2em;
+
 }
 
 .Username {
@@ -144,6 +146,7 @@ span {
   border-radius: 8px;
   border: solid 1px #7f7f7f;
   background-color: #fff;
+  padding-right: 2em;
 }
 
 .SignedIn {
@@ -217,6 +220,18 @@ h1 {
   right: 0.1;
 }
 
+.ContContainer {
+   /* border: solid red; */
+ position: relative;
+  padding-top: 0.2em;
+  padding-right: 2%;
+  right: 0.1;
+  width: 400px;
+align-items: left;
+
+}
+
+
 .Continue {
   /* border: solid black ; */
   cursor: pointer;
@@ -239,6 +254,9 @@ h1 {
 
   border: #4267b2;
   color: #fff;
+
+
+  
 
   /* width: 400px;
   height: 58px;
@@ -274,8 +292,8 @@ h1 {
 
 .Security {
   /* border: solid black; */
-  height: 44px;
-  flex-grow: 1;
+  /* height: 44px; */
+  /* flex-grow: 1; */
   /* font-family: Roboto; */
   font-size: 14px;
   font-weight: normal;
@@ -285,4 +303,10 @@ h1 {
   letter-spacing: normal;
   text-align: left;
   color: #000;
+/* text-align: left; */
+  /* position: relative; */
+  /* padding-top: 0.4em; */
+  padding-left: 5%;
+  /* right: 0.1; */
+  
 }

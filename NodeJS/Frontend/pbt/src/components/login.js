@@ -128,17 +128,20 @@ export default function login() {
           <IoRadioButtonOnOutline className={Style.RadioButton} />
           <span className={Style.Sign}>Keep me signed in</span>
         </p>
-        <span className={Style.Security}>
+        <p className={Style.Security}>
           For your security, we recommend unchecking this box on shared devices.
-        </span>
+        </p>
         <br />
         <br />
-        <input
-          type="submit"
-          onClick={Login()}
-          value="CONTINUE"
-          className={Style.Continue}
-        />
+        <div className={Style.ContContainer}>
+          {" "}
+          <input
+            type="submit"
+            onClick={Login()}
+            value="CONTINUE"
+            className={Style.Continue}
+          />
+        </div>
       </form>
       <a href="/register" className={Style.DontHave}>
         Don't have PB account?{" "}
