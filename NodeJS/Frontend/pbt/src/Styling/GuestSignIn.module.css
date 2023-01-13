@@ -1,0 +1,57 @@
+.Guest {
+  width: 275px;
+  height: 42px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 34px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.24;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0d4f77;
+}
+
+.GuestBox {
+  width: 400px;
+  height: 286px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  margin: 112px 280px 0 281px;
+  padding: 0;
+}
+
+.PbAccount {
+  width: 179px;
+  height: 42px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 34px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.24;
+  letter-spacing: normal;
+  text-align: center;
+  color: #0d4f77;
+}
+
+.PbAccountBox {
+  width: 544px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  margin: 112px 223px 26px 280px;
+  padding: 0;
+}
+
+.MainContainer {
+    border: solid red;
+}
