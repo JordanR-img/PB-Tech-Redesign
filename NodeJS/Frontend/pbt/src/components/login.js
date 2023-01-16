@@ -73,7 +73,6 @@ export default function login() {
   //     }
   //   });
   function LoginUsers(e) {
-    // const [loggedIn, isLoggedIn] = useState();
 
     e.preventDefault();
     const username = document.querySelector("#username");
@@ -131,8 +130,8 @@ export default function login() {
         <p className={Style.Security}>
           For your security, we recommend unchecking this box on shared devices.
         </p>
-        <br />
-        <br />
+       
+        
         <div className={Style.ContContainer}>
           {" "}
           <input
@@ -142,12 +141,12 @@ export default function login() {
             className={Style.Continue}
           />
         </div>
-      </form>
-      <a href="/register" className={Style.DontHave}>
+      
+      <span className={Style.DontHave}>
         Don't have PB account?{" "}
         <span className={Style.Create}>Create PB account</span>
-      </a>
-
+      </span>
+    
       <p className={Style.FaceBook}>
         <MdOutlineFacebook />
         SIGN IN WITH FACEBOOK
@@ -156,6 +155,9 @@ export default function login() {
         <FcGoogle />
         SIGN IN WITH GOOGLE
       </p>
+      
+      </form>
     </div>
+
   );
 }

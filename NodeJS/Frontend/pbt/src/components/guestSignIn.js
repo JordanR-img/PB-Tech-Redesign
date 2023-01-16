@@ -1,5 +1,7 @@
 import React from "react";
 import Style from "../Styling/GuestSignIn.module.css";
+import { Link } from "react-router-dom";
+import Login from '../Pages/PBTLoginPage'
 export default function guestSignIn() {
   function karanSubmit(e) {
     e.preventDefault();
@@ -32,32 +34,54 @@ export default function guestSignIn() {
   }
   return (
     <div>
-      <div className={Style.HeaderContainer}>
-      <div className={Style.GuestBox}>
-        <span className={Style.Guest}>Continue as guest</span>
-      </div>
+      {/* <div className={Style.HeaderContainer}> */}
+      {/* <div className={Style.GuestBox}>
+          <span className={Style.Guest}>Continue as guest</span>
+        </div> */}
+      {/* 
+        <div className={Style.PbAccountBox}>
+          <span className={Style.PbAccount}>PB Account</span>
+        </div> */}
 
-      <div className={Style.PbAccountBox}>
-        <span className={Style.PbAccount}>PB Account</span>
-      </div>
-      </div>
+      {/* </div> */}
       <div className={Style.MainContainer}>
-       
         <form onSubmit={karanSubmit}>
-          <div></div>
+          <div className={Style.GuestBox}>
+            <span className={Style.Guest}>Continue as guest</span>
+          </div>
+          
           <br />
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" className={Style.username}>
+            Username
+          </label>
           <br />
-          <input type="text" id="user" required />
+          <input type="text" id="user" required className={Style.UserField} />
+
           <br />
-          <label htmlFor="password">Password</label>
           <br />
-          <input type="password" id="pass" required />
-          <br />
-          <input type="submit" value="register" />
-          <br />
+          <input
+            className={Style.SignIn}
+            type="submit"
+            value="CONTINUE"
+            onClick={karanSubmit}
+          />
         </form>
-        <a href="/login">Already registered? Login</a>
+        <div className={Style.RightBox}>
+          <div className={Style.PbAccountBox}>
+            <span className={Style.PbAccount}>PB Account</span>
+          </div>
+
+          <span>
+            Please login with your PB account so that you can view and track
+            your orders
+          </span>
+
+          <Link to='/signin' className={Style.LinkToSignIn}><input className={Style.SignIn} type="submit" value="SIGN IN" /></Link>
+          <Link to="/login" className={Style.LinkToRegister}>
+          Don't have PB account? Create PB Account
+            </Link>
+          {/* <a href="/login">Don't have PB account? Create PB Account</a> */}
+        </div>
       </div>
     </div>
   );

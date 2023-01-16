@@ -1,65 +1,6 @@
 import React from "react";
 import Style from "../Styling/RegisterUsers.module.css";
 export default function register() {
-  // const form = document.querySelector("form");
-  // const username = document.querySelector("#username");
-  // const password = document.querySelector("#password");
-  // const display = document.querySelector(".error");
-  function submit() {
-    const form = document.querySelector("form");
-    const username = document.querySelector("#user");
-    const password = document.querySelector("#pass");
-    const display = document.querySelector(".error");
-    console.log(username, password);
-    if (form) {
-      console.log("im being clicked");
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        display.textContent = "";
-
-        try {
-          console.log(username, password);
-          const res = await fetch("/api/auth/register", {
-            method: "POST",
-            body: JSON.stringify({
-              username: username.value,
-              password: password.value,
-            }),
-            headers: { "Content-Type": "application/json" },
-          });
-
-          console.log("it failed");
-          const data = await res.json();
-          if (res.status === 400 || res.status === 401) {
-            return (display.textContent = `${data.message}. ${
-              data.error ? data.error : ""
-            }`);
-          }
-          data.role === "admin"
-            ? window.location.assign("/admin")
-            : window.location.assign("/basic");
-        } catch (err) {
-          console.log(err.message);
-          console.log("I'm right here with ya mate");
-        }
-      });
-    }
-  }
-
-  function submit2() {
-    const form = document.querySelector("form");
-    const username = document.querySelector("#username");
-    const password = document.querySelector("#password");
-    console.log(username, password);
-    const res = fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-  }
 
   function karanSubmit(e) {
     e.preventDefault();

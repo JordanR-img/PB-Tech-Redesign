@@ -6,19 +6,32 @@ import useState from 'react'
 import PBTLoginPage from './Pages/PBTLoginPage';
 import GuestSignIn from './Pages/PBTGuestSignIn'
 import ImageSlider from './components/ImageSlider';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React from 'react';
+// import ReactDOM from "react-dom/client";
 export default function App() {
 
-  return (
-
-    
-    <div className="App">
       {/* <PBTLoginPage /> */}
-    <GuestSignIn />
+    {/* <GuestSignIn /> */}
 
       {/* <PBTHomePage /> */}
 {/* <ImageSlider /> */}
       {/* <Result /> */}
-    </div>
+
+  return (
+
+    
+    <Router>
+    <Routes>
+      <Route>
+        <Route path="/" element={<GuestSignIn />}></Route>
+      </Route>
+      <Route>
+        <Route path="/signin" element={<PBTLoginPage />}></Route>
+      </Route>
+    </Routes>
+  </Router>
+  
+  
   );
 }
-// }
