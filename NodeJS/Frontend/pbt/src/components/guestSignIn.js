@@ -32,6 +32,7 @@ export default function guestSignIn() {
   }
   return (
     <div>
+      <div className={Style.HeaderContainer}>
       <div className={Style.GuestBox}>
         <span className={Style.Guest}>Continue as guest</span>
       </div>
@@ -39,7 +40,7 @@ export default function guestSignIn() {
       <div className={Style.PbAccountBox}>
         <span className={Style.PbAccount}>PB Account</span>
       </div>
-
+      </div>
       <div className={Style.MainContainer}>
        
         <form onSubmit={karanSubmit}>

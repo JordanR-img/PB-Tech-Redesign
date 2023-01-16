@@ -1,4 +1,5 @@
 .Guest {
+  border: solid purple;
   width: 275px;
   height: 42px;
   flex-grow: 0;
@@ -23,9 +24,12 @@
   gap: 48px;
   margin: 112px 280px 0 281px;
   padding: 0;
+  border: solid black;
 }
 
 .PbAccount {
+  border: solid red;
+
   width: 179px;
   height: 42px;
   flex-grow: 0;
@@ -41,6 +45,7 @@
 }
 
 .PbAccountBox {
+  border: solid gold;
   width: 544px;
   height: 260px;
   display: flex;
@@ -53,5 +58,13 @@
 }
 
 .MainContainer {
-    border: solid red;
+    border: 20px solid red;
+}
+
+.HeaderContainer {
+  border: solid black;
+  display: flex;
+
+
+
 }
