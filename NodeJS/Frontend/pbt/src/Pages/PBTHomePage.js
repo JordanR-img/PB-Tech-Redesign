@@ -16,9 +16,9 @@ export default function PBTHomePage() {
     <div><Carousel /></div>
     {/* <main><MainContent /></main> */}
     {/* <SignInModal /> */}
-    <Login />
+    {/* <Login />
 
-    <Register />
+    <Register /> */}
     {/* <footer><BottomNav /></footer> */}
   </div>
   )
