@@ -102,7 +102,7 @@
 // export default ImageSlider;
 
 import { useState } from "react";
-
+import React from "react";
 const slideStyles = {
   width: "100%",
   height: "100%",

@@ -10,7 +10,7 @@ const EmployeeRoute = require("./routes/employee");
 const LoginRoute = require("./routes/auth");
 
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
+var cookieParser = require("cookie-parser");
 
 server.use(cookieParser());
 // async function main() {

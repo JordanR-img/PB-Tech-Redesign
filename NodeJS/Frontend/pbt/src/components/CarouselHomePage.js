@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import boxing from '../Pages/Assets/CarouselBoxingDay.png'
 import surface from '../Pages/Assets/CarouselMicrosoft.png'
 import gift from '../Pages/Assets/CarouselGift.png'

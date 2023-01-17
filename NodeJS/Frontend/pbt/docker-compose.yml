@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: .
+    volumes:
+      - .:/pbt
+    ports:
+      - 3000:3000
+    image: app:react
+    container_name: pbt
+    command: npm start
+
+  mongodb:
+    build:
+      context: .
+      dockerfile: ../../Dockerfile
+    # command: nodemon server.js
+    volumes:
+      - ../../NodeJS/:/usr/
+    ports:
+      - 4444:4040
+  
+
+
