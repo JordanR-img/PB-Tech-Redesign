@@ -14,7 +14,7 @@ var cookieParser = require("cookie-parser");
 
 server.use(cookieParser());
 // async function main() {
-const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://PBT:${PASSWORD}@cluster0.ahmbuv5.mongodb.net/?retryWrites=true&w=majority`;
 
 // const client = new MongoClient(uri);
 mongoose.set("strictQuery", false),

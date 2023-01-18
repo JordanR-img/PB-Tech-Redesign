@@ -1,25 +1,105 @@
-version: '3.8'
-services:
-  app:
-    build: 
-      context: .
-    volumes:
-      - .:/pbt
-    ports:
-      - 3000:3000
-    image: app:react
-    container_name: pbt
-    command: npm start
+# version: '3.8'
+# services:
+#   app:
+#     build: 
+#       context: .
+#     volumes:
+#       - .:/pbt
+#     ports:
+#       - 3000:3000
+#     image: app:react
+#     stdin_open: true
+#     container_name: pbt
+#     command: npm start
 
-  mongodb:
-    build:
-      context: .
-      dockerfile: ../../Dockerfile
-    # command: nodemon server.js
-    volumes:
-      - ../../NodeJS/:/usr/
+version: '3'
+services:
+  react-app:
+    image: whale80/pbtpublish
+    stdin_open: true
+    tty: true
     ports:
-      - 4444:4040
+      - "3000:3000"
+    networks:
+      - mern-stack-net
+    depends_on:
+      - api
+  api:
+   build: 
+      context: ./api
+      dockerfile: Dockerfile.dev
+   ports:
+     - 3080:3080
+   container_name: mern-api
+   networks:
+     - mern-stack-net
+   volumes:
+    - ./api/src:/usr/app/src
+   depends_on:
+    - mongo
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-stack-net
+    volumes:
+      - mongo-data:/data:/data/db
+networks:
+  mern-stack-net:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
+
+      # api-server:
+  #   image: whale80/pbtbackend2.0
+  #   ports:
+  #     - "4444:4040"
+  #   networks:
+  #     - mern-app
+  #   depends_on:
+  #     - mongo
+
+  # mongo:
+  #   image: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+
+
+  # mongodb:
+  #   build:
+  #     context: .
+  #     dockerfile: ../../Dockerfile
+  #   # command: nodemon server.js
+  #   volumes:
+  #     - ../../NodeJS/:/usr/
+  #   ports:
+  #     - 4444:4040
   
 
 
+# version: '3'
+# services:
+#   react-app:
+#     build: .
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - ./src:/app/src
+#     environment:
+#       - REACT_APP_NAME=Jordan
+#       - CHOKIDAR_USEPOLLING=true
+    
