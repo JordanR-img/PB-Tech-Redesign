@@ -1,6 +1,7 @@
 import React from "react";
 import Style from "../Styling/LoginUsers.module.css";
 import { useState } from "react";
+import axios from 'axios'
 import { IoRadioButtonOnOutline } from "react-icons/io5";
 import { MdOutlineFacebook } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
@@ -72,40 +73,92 @@ export default function login() {
   //       console.log(err.message);
   //     }
   //   });
-  function LoginUsers(e) {
+  // function LoginUsers(e) {
 
+  //   e.preventDefault();
+  //   const username = document.querySelector("#username");
+  //   const password = document.querySelector("#password");
+  //   console.log(username.value);
+
+  //   let myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
+
+  //   let raw = JSON.stringify({
+  //     username: username.value,
+  //     password: password.value,
+  //   });
+
+  //   console.log(username, password);
+  //   let requestOptions = {
+  //     method: "POST",
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: "follow",
+  //   };
+
+  //   fetch("http://localhost:4444/api/auth/login", requestOptions)
+  //     .then((response) => response.text())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.log("error", error));
+  // }
+
+  // function LoginUsers(e) {
+
+  //   e.preventDefault();
+  //   const username = document.querySelector("#username");
+  //   const password = document.querySelector("#password");
+  //   console.log(username.value);
+
+  //   let requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     data: {
+  //       username: username.value,
+  //       password: password.value,
+  //     },
+  //   };
+
+
+function LoginUsers(e) {
     e.preventDefault();
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
     console.log(username.value);
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    let raw = JSON.stringify({
-      username: username.value,
-      password: password.value,
-    });
-
-    console.log(username, password);
     let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        data: {
+            username: username.value,
+            password: password.value,
+        },
     };
 
-    fetch("http://localhost:4444/api/auth/login", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }
+    axios.post("http://mern-api:4444/api/auth/login", requestOptions.data)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log("error", error);
+        });
+      }
 
-  
+  //   axios.post("http://localhost:4444/api/auth/login", {
+  //     username: username.value,
+  //     password: password.value,
+  //     }).then((response) => {
+  //     console.log(response);
+  //     })
+  //     .catch((error) => {
+  //     console.log("error", error);
+  //     });
+  // }
+
+
   return (
     <div className={Style.MainContainer}>
       <h1>Sign in to your PB account</h1>
-      <form onSubmit={LoginUsers} className={Style.Form}>
+      <form onSubmit={(e) => LoginUsers(e)} className={Style.Form}>
         <label htmlFor="username" className={Style.Username}>
           Username
         </label>
@@ -131,8 +184,15 @@ export default function login() {
         <p className={Style.Security}>
           For your security, we recommend unchecking this box on shared devices.
         </p>
-       
-        
+        <div className={Style.ContContainer}>
+          <input
+            type="submit"
+            onClick={(e) => LoginUsers(e)}
+            value="CONTINUE"
+            className={Style.Continue}
+          />
+        </div>
+{/*         
         <div className={Style.ContContainer}>
           {" "}
           <input
@@ -141,7 +201,7 @@ export default function login() {
             value="CONTINUE"
             className={Style.Continue}
           />
-        </div>
+        </div> */}
       
       <span className={Style.DontHave}>
         Don't have PB account?{" "}
