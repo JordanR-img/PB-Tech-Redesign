@@ -179,7 +179,7 @@ services:
     networks:
       - mern-stack-net
     volumes:
-      - api-src:/usr/Backend
+      - api-src:/Backend
     environment:
       - MONGO_URL=mongodb+srv://PBT:rhQhpPMAB3ZQTqi@cluster0.ahmbuv5.mongodb.net/tryingagain?retryWrites=true&w=majority
     depends_on:
@@ -197,13 +197,13 @@ services:
     ports:
       - 27017:27017
   nginx:
-    image: nginx:latest
+    image: nginx:1.19.0
     ports:
       - 80:80
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/default.conf
     depends_on:
-      - react-app
+      - api
 networks:
   mern-stack-net:
     driver: bridge
