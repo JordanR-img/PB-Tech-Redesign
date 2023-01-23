@@ -33,7 +33,7 @@ server.use(cookieParser());
 mongoose.set("strictQuery", false),
   mongoose
     .connect(
-      Process.env.MONGO_URL,
+      process.env.MONGO_URL,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
