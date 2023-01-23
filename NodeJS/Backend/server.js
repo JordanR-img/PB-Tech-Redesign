@@ -33,7 +33,7 @@ server.use(cookieParser());
 mongoose.set("strictQuery", false),
   mongoose
     .connect(
-      "mongodb+srv://PBT:rhQhpPMAB3ZQTqi@cluster0.ahmbuv5.mongodb.net/tryingagain?retryWrites=true&w=majority",
+      Process.env.MONGO_URL,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

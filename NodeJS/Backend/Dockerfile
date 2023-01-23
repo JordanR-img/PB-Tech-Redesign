@@ -14,7 +14,7 @@
 
 FROM node:latest
 
-WORKDIR /Backend
+WORKDIR /Backend/server.js
 COPY package.json .
 RUN npm install
 COPY . .
