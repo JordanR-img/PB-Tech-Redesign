@@ -8,7 +8,7 @@ server.use(express.json());
 const PASSWORD = process.env.PASSWORD;
 server.use(require("cors")()); // allow Cross-domain requests
 const corsOptions = {
-  origin: "http://localhost:4444", // replace with your frontend's URL
+  origin: "http://localhost:3000", // replace with your frontend's URL
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }

@@ -14,14 +14,14 @@
 
 FROM node:latest
 
-WORKDIR /Backend/server.js
+WORKDIR /Backend
 COPY package.json .
 RUN npm install
 COPY . .
 
 EXPOSE 4444
 
-CMD [ "npm", "start" ]
+CMD [ "node", "server.js" ]
 
 
 

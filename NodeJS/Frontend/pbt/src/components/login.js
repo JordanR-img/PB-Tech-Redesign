@@ -96,7 +96,7 @@ export default function login() {
   //     redirect: "follow",
   //   };
 
-  //   fetch("http://localhost:4444/api/auth/login", requestOptions)
+  //   fetch("http://mern-api:4444/api/auth/login", requestOptions)
   //     .then((response) => response.text())
   //     .then((result) => console.log(result))
   //     .catch((error) => console.log("error", error));
@@ -134,25 +134,25 @@ function LoginUsers(e) {
         },
     };
 
-    axios.post("http://mern-api:4444/api/auth/login", requestOptions.data)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log("error", error);
-        });
-      }
+//     axios.post("http://localhost:4444/api/auth/login", requestOptions.data)
+//         .then((response) => {
+//             console.log(response);
+//         })
+//         .catch((error) => {
+//             console.log("error", error);
+//         });
+//       }
 
-  //   axios.post("http://localhost:4444/api/auth/login", {
-  //     username: username.value,
-  //     password: password.value,
-  //     }).then((response) => {
-  //     console.log(response);
-  //     })
-  //     .catch((error) => {
-  //     console.log("error", error);
-  //     });
-  // }
+    axios.post("http://mern-api:4444/api/auth/login", {
+      username: username.value,
+      password: password.value,
+      }).then((response) => {
+      console.log(response);
+      })
+      .catch((error) => {
+      console.log("error", error);
+      });
+  }
 
 
   return (
