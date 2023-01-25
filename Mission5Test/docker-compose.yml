@@ -100,7 +100,7 @@ services:
   mongodb:
     image: mongo:latest
   backend:
-    build: ./backend
+    build: ./Backend
     ports:
       - "4444:4444"
     environment:
@@ -108,7 +108,7 @@ services:
     depends_on:
       - mongodb
   frontend:
-      build: ./frontend
+      build: ./misson5
       ports:
         - "3000:3000"
       environment:
