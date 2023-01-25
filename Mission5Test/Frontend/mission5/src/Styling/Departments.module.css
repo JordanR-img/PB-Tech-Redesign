@@ -1,0 +1,28 @@
+.BigContainer {
+  padding-top: 4em;
+  padding-left: 4em;
+}
+
+h3 {
+  /* font-family: Roboto; */
+  font-size: 26px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0d4f77;
+}
+.Line {
+  /* width: 40%; */
+  margin-right: 10%;
+  margin-left: 0%;
+  height: 1px;
+  background-color: #000000;
+  border: none;
+}
+
+.Cards {
+  padding-top: 4em;
+}

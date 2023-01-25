@@ -1,0 +1,155 @@
+# version: '3'
+# services:
+#   react-app:
+#     image: newfrontendbuild:latest
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - mern-stack-net
+#     environment:
+#       - NEXT_PUBLIC_BASEURL=http://localhost:3000
+#     depends_on:
+#       - api
+#   api:
+#     image: newapi:latest
+#     ports:
+#       - 4444:4040
+#     container_name: mern-apiendpoint
+#     networks:
+#       - mern-stack-net
+#     volumes:
+#       - .:/usr/src/app
+#     depends_on:
+#       - mongo
+#     environment:
+#       - MONGO_URL=mongodb://mongo:27017/tryingagain
+#   mongo:
+#     image: mongo:latest
+#     networks:
+#       - mern-stack-net
+#     container_name: mern-mongo
+#     command: "mongod --bind_ip_all"
+#     environment:
+#       - MONGO_INITDB_ROOT_USERNAME=PBT
+#       - MONGO_INITDB_ROOT_PASSWORD=rhQhpPMAB3ZQTqi
+#       - MONGO_INITDB_DATABASE=tryingagain
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - mongo-data:/data/db
+#   # nginx:
+#   #   image: nginx:1.19.0
+#   #   ports:
+#   #     - 80:80
+#   #   volumes:
+#   #     - ./nginx.conf:/etc/nginx/conf.d/default.conf
+#   #   depends_on:
+#   #     - api
+# networks:
+#   mern-stack-net:
+#     driver: bridge
+# volumes:
+#   api-src:
+#     driver: local
+
+# version: '3'
+# services:
+#   react-app:
+#     image: newfrontendbuild:latest
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - mern-stack-net
+#     depends_on:
+#       - api
+#   api:
+#     image: newapi:latest
+#     ports:
+#       - 4444:4040
+#     container_name: mern-apiendpoint
+#     networks:
+#       - mern-stack-net
+#     volumes:
+#       - .:/usr/src/app
+#     depends_on:
+#       - mongo
+#     environment:
+#       - host.docker.internal=mongodb://mongo:27017/tryingagain
+#   mongo:
+#     container_name: mongo-dev
+#     image: mongo:4.2
+#     environment:
+#       - MONGO_INITDB_ROOT_USERNAME=PBT
+#       - MONGO_INITDB_DATABASE=tryingagain
+#       - MONGO_INITDB_ROOT_PASSWORD=rhQhpPMAB3ZQTqi
+#     networks: 
+#       - mern-stack-net
+#     ports:
+#       - 27017:27017
+#     volumes: 
+#       - mongo-data:/data/db
+# networks:
+#   mern-stack-net:
+#     driver: bridge
+
+# volumes:
+#   mongo-data:
+
+version: '3'
+services:
+  mongodb:
+    image: mongo:latest
+  backend:
+    build: ./backend
+    ports:
+      - "4444:4444"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+  frontend:
+      build: ./frontend
+      ports:
+        - "3000:3000"
+      environment:
+        - NODE_ENV=production
+      stdin_open: true
+      tty: true
+      depends_on:
+        - backend
+volumes:
+  data:
+  logs:
+
+# version: '3.8'
+# services:
+#   mongodb:
+#     image: "mongo"
+#     volumes:
+#       - mongo-data:/data/db
+#   backend:
+#     build: 
+#       context: ./Backend
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - backend-logs:/app/logs
+#       - .:/app
+#     depends_on:
+#       - mongodb
+#     environment:
+#       - MONGO_URL=mongodb://mongodb:27017/tryingagain
+#   frontend:
+#     build: 
+#       context: ./Frontend/mission5
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - .:/app
+#     depends_on:
+#       - backend
+#     environment:
+#       - NEXT_PUBLIC_BASEURL=http://localhost:3000
+# volumes:
+#   mongo-data:
+#   backend-logs:
