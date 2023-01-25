@@ -13,8 +13,9 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"]
 }
 server.use(cors(corsOptions));
-const EmployeeRoute = require("../Backend/Auth/auth");
-const LoginRoute = require("../Backend/Auth/routes/auth");
+const EmployeeRoute = require("./Auth/auth");
+const LoginRoute = require("./Auth/auth");
+// const LoginRoute = require('./Auth/routes/auth')
 const connectionString = process.env.MONGO_URI
 const mongoose = require("mongoose");
 var cookieParser = require("cookie-parser");
